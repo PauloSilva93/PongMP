@@ -1,0 +1,5 @@
+.vscode/c_cpp_properties.json
+Build/game.exe
+Build/game.ilk
+Compiler/OBJ/*
+Compiler/PDB/*

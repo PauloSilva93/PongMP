@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "(Program) Execute",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Build/game.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Build",
+            "console": "externalTerminal"
+        },
+        {
+            "name": "(Program) Compile and Execute",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Build/game.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Build",
+            "console": "externalTerminal",
+            "preLaunchTask": "Build Project"
+        },
+    ]
+}
