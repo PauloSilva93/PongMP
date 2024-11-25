@@ -4,13 +4,40 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Project",
+            "label": "Build Project Development",
             "type": "shell",
             "presentation": { "reveal": "always" },
             "group": "build",
             "problemMatcher": "$msCompile",
             "command": "${config:python.defaultInterpreterPath}",
-            "args": ["${workspaceFolder}/Compiler/SCR/compile.py"]
+            "args": ["${workspaceFolder}/Compiler/SCR/compile-project.py"]
+        },
+        {
+            "label": "Build Project Release",
+            "type": "shell",
+            "presentation": { "reveal": "always" },
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": ["${workspaceFolder}/Compiler/SCR/compile-project.py", "release"]
+        },
+        {
+            "label": "Build Engine Development",
+            "type": "shell",
+            "presentation": { "reveal": "always" },
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": ["${workspaceFolder}/Compiler/SCR/compile-engine.py"]
+        },
+        {
+            "label": "Build Engine Release",
+            "type": "shell",
+            "presentation": { "reveal": "always" },
+            "group": "build",
+            "problemMatcher": "$msCompile",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": ["${workspaceFolder}/Compiler/SCR/compile-engine.py", "release"]
         }
     ]
 }
