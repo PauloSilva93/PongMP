@@ -1,5 +1,13 @@
 .vscode/c_cpp_properties.json
+.vscode/settings.json
+
 Build/game.exe
 Build/game.ilk
-Compiler/OBJ/*
-Compiler/PDB/*
+Build/Binaries/engine.dll
+
+Compiler/LIBS/Project/engine.lib
+
+Compiler/OBJ/**/*.obj
+Compiler/PDB/*.idb
+Compiler/PDB/*.pdb
+
