@@ -5,6 +5,8 @@ Build/game.exe
 Build/game.ilk
 Build/Binaries/engine.dll
 
+Compiler/LOGS/profiler.json
+
 Compiler/LIBS/Project/engine.lib
 
 Compiler/OBJ/**/*.obj
