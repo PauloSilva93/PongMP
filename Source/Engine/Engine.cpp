@@ -1,7 +1,8 @@
 #include "Engine.hpp"
-#include "Vendors/SDL3/SDL.h"
-#include "Vendors/SDL3/SDL_main.h"
-
+#include <cassert>
+#include "SDL3/SDL.h"
+#include "SDL3/SDL_main.h"
+#include "GLAD/glad.h"
 
 void Engine::Start() {
 
@@ -12,6 +13,8 @@ void Engine::Start() {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 	SDL_Window* window = SDL_CreateWindow("window", WIDTH, HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	SDL_GLContext glcontext = SDL_GL_CreateContext(window);
+
+    assert(gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress), "Fail to initialize GLAD");
 
     SDL_Event evnt;
 	
