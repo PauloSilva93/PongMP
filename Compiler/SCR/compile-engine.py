@@ -16,6 +16,7 @@ def Compile():
     # Export Paths
     output_lib_path = ".\\Build\\Binaries\\engine.dll" if is_release else ".\\Compiler\\Libs\\Project\\engine.lib"
     include_folders = ".\\Source\\Engine\\"
+    include_vendors_folder = ".\\Source\\Engine\\Vendors\\"
     obj_file_path   = ".\\Compiler\\OBJ\\Engine\\"
     pdb_file_path   = ".\\Compiler\\PDB\\engine.pdb"
 
@@ -59,6 +60,7 @@ def Compile():
     result_arguments += preprocessor_definitions_by_default + " "
     result_arguments += preprocessor_definitions_for_debugging + " "
     result_arguments += "/I " + include_folders + " "
+    result_arguments += "/I " + include_vendors_folder + " "
     result_arguments += "@cpp_sources.txt" + " "
     result_arguments += "/Fo:" + obj_file_path + " /Fd:" + pdb_file_path + " "
     result_arguments += ("/Fe:" + output_lib_path + " ") if is_release else ""

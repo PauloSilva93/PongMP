@@ -16,7 +16,8 @@ def Compile():
     # Export Paths
     output_exe_path = ".\\Build\\game.exe"
     include_folders = ".\\Source\\"
-    include_project_folder = "\\Source\\Project\\"
+    include_project_folder = ".\\Source\\Project\\"
+    include_vendors_folder = ".\\Source\\Engine\\Vendors\\"
     obj_file_path   = ".\\Compiler\\OBJ\\Project\\"
     pdb_file_path   = ".\\Compiler\\PDB\\project.pdb"
 
@@ -58,7 +59,8 @@ def Compile():
     result_arguments += preprocessor_definitions_by_default + " "
     result_arguments += preprocessor_definitions_for_debugging + " "
     result_arguments += "/I " + include_folders + " "
-    result_arguments += "/I " + include_project_folders + " "
+    result_arguments += "/I " + include_project_folder + " "
+    result_arguments += "/I " + include_vendors_folder + " "
     result_arguments += "@cpp_sources.txt" + " "
     result_arguments += "/Fo:" + obj_file_path + " /Fd:" + pdb_file_path + " "
     result_arguments += "/Fe:" + output_exe_path + " "
