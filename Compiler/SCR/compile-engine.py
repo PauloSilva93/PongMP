@@ -15,6 +15,8 @@ def Compile():
     
     # Export Paths
     output_lib_path = ".\\Build\\Binaries\\engine.dll" if is_release else ".\\Compiler\\Libs\\Project\\engine.lib"
+    include_source_folders = ".\\Source\\"
+    include_vendors_folders = ".\\Source\\Vendors\\"
     include_folders = ".\\Source\\Engine\\"
     include_vendors_folder = ".\\Source\\Engine\\Vendors\\"
     obj_file_path   = ".\\Compiler\\OBJ\\Engine\\"
@@ -32,16 +34,16 @@ def Compile():
     debug_flags = "/MD /LD" if is_release else "/MDd"
 
     # Build Flags Settings
-    building_flags = "/Gm"
+    building_flags = ""
 
     # Add compilation files to txt file
-    # files_vendors_c   = IterateFile(include_folders + "Vendors\\", ".c");
-    # files_vendors_cpp = IterateFile(include_folders + "Vendors\\", ".cpp");
+    files_vendors_c   = IterateFile(include_folders + "Vendors\\", ".c");
+    files_vendors_cpp = IterateFile(include_folders + "Vendors\\", ".cpp");
     files_source_cpp  = IterateFile(include_folders, ".cpp");
 
     with open('cpp_sources.txt', 'w') as f:
-        # for i in files_vendors_c:   f.write(i + "\n")
-        #for i in files_vendors_cpp: f.write(i + "\n")
+        for i in files_vendors_c:   f.write(i + "\n")
+        for i in files_vendors_cpp: f.write(i + "\n")
         for i in files_source_cpp:  f.write(i + "\n")
 
     # MSVC Compiler Settings
@@ -50,7 +52,7 @@ def Compile():
     compiler_flags += "/await /fp:precise /Zc:forScope /Zc:inline "
     compiler_flags += building_flags + " /nologo "                     # General Configuration
     compiler_flags += "/EHsc /diagnostics:caret /W3 /FC " #/WX "       # Error Handling            
-    compiler_flags += "/ZI /GS /JMC /Gd /RTC1"                         # Debugging Configuration
+    compiler_flags += "/Z7 /GS /Gd /RTC1"                         # Debugging Configuration
 
     # MSVC Linker Settings
     linker_flags = "/NOLOGO /INCREMENTAL /DEBUG /NXCOMPAT /ERRORREPORT:PROMPT /SUBSYSTEM:CONSOLE /MACHINE:X64 /DYNAMICBASE"
@@ -59,8 +61,9 @@ def Compile():
     result_arguments = "cl.exe " + compiler_flags + " "
     result_arguments += preprocessor_definitions_by_default + " "
     result_arguments += preprocessor_definitions_for_debugging + " "
+    result_arguments += "/I " + include_source_folders + " "
+    result_arguments += "/I " + include_vendors_folders + " "
     result_arguments += "/I " + include_folders + " "
-    result_arguments += "/I " + include_vendors_folder + " "
     result_arguments += "@cpp_sources.txt" + " "
     result_arguments += "/Fo:" + obj_file_path + " /Fd:" + pdb_file_path + " "
     result_arguments += ("/Fe:" + output_lib_path + " ") if is_release else ""

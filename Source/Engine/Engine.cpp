@@ -1,8 +1,7 @@
-#define SDL_MAIN_HANDLED
-
 #include "Engine.hpp"
-#include "SDL3/SDL.h"
-#include "SDL3/SDL_main.h"
+#include "Vendors/SDL3/SDL.h"
+#include "Vendors/SDL3/SDL_main.h"
+
 
 void Engine::Start() {
 
