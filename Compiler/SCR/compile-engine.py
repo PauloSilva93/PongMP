@@ -35,13 +35,13 @@ def Compile():
     building_flags = "/Gm"
 
     # Add compilation files to txt file
-    # files_vendors_c   = IterateFile(include_folders + "Vendors\\", ".c");
-    # files_vendors_cpp = IterateFile(include_folders + "Vendors\\", ".cpp");
+    files_vendors_c   = IterateFile(include_folders + "Vendors\\", ".c");
+    files_vendors_cpp = IterateFile(include_folders + "Vendors\\", ".cpp");
     files_source_cpp  = IterateFile(include_folders, ".cpp");
 
     with open('cpp_sources.txt', 'w') as f:
-        # for i in files_vendors_c:   f.write(i + "\n")
-        #for i in files_vendors_cpp: f.write(i + "\n")
+        for i in files_vendors_c:   f.write(i + "\n")
+        for i in files_vendors_cpp: f.write(i + "\n")
         for i in files_source_cpp:  f.write(i + "\n")
 
     # MSVC Compiler Settings
