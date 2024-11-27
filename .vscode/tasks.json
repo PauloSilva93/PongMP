@@ -6,70 +6,47 @@
         {
             "label": "Build Project Development",
             "type": "shell",
-            "presentation": {
-                "reveal": "always"
-            },
+            "presentation": { "reveal": "always" },
             "group": "build",
             "problemMatcher": "$msCompile",
             "command": "${config:python.defaultInterpreterPath}",
-            "args": [
-                "${workspaceFolder}/Compiler/SCR/compile-project.py"
-            ]
+            "args": [ "${workspaceFolder}/Compiler/SCR/compile-project.py" ]
         },
         {
             "label": "Build Project Release",
             "type": "shell",
-            "presentation": {
-                "reveal": "always"
-            },
+            "presentation": { "reveal": "always" },
             "group": "build",
             "problemMatcher": "$msCompile",
             "command": "${config:python.defaultInterpreterPath}",
-            "args": [
-                "${workspaceFolder}/Compiler/SCR/compile-project.py",
-                "release"
-            ]
+            "args": [ "${workspaceFolder}/Compiler/SCR/compile-project.py", "release" ] 
         },
         {
             "label": "Build Engine Development",
             "type": "shell",
-            "presentation": {
-                "reveal": "always"
-            },
+            "presentation": { "reveal": "always" },
             "group": "build",
             "problemMatcher": "$msCompile",
             "command": "${config:python.defaultInterpreterPath}",
-            "args": [
-                "${workspaceFolder}/Compiler/SCR/compile-engine.py"
-            ]
+            "args": [ "${workspaceFolder}/Compiler/SCR/compile-engine.py" ]
         },
         {
             "label": "Build Engine Release",
             "type": "shell",
-            "presentation": {
-                "reveal": "always"
-            },
+            "presentation": { "reveal": "always" },
             "group": "build",
             "problemMatcher": "$msCompile",
             "command": "${config:python.defaultInterpreterPath}",
-            "args": [
-                "${workspaceFolder}/Compiler/SCR/compile-engine.py",
-                "release"
-            ]
+            "args": [ "${workspaceFolder}/Compiler/SCR/compile-engine.py", "release" ]
         },
         {
             "label": "Build All Development",
             "type": "shell",
-            "presentation": {
-                "reveal": "always"
-            },
+            "presentation": { "reveal": "always" },
             "group": "build",
-            "dependsOn": [
-                "Build Engine Development",
-                "Build Project Development"
-            ],
-            "dependsOrder": "sequence",
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+            "dependsOn": [ "Build Engine Development", "Build Project Development" ],
+            "dependsOrder": "sequence"
         }
     ]
 }

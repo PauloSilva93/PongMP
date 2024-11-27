@@ -15,18 +15,18 @@ def Compile():
     
     # Export Paths
     output_exe_path = ".\\Build\\game.exe"
-    include_folders = ".\\Source\\"
-    include_project_folder = ".\\Source\\Project\\"
-    include_vendors_folder = ".\\Source\\Engine\\Vendors\\"
+    include_source_folders = ".\\Source\\"
+    include_vendors_folders = ".\\Source\\Vendors\\"
+    include_project_folders = ".\\Source\\Project\\"
     obj_file_path   = ".\\Compiler\\OBJ\\Project\\"
     pdb_file_path   = ".\\Compiler\\PDB\\project.pdb"
 
     # Import Paths
     preprocessor_definitions_by_default     = "/D _CONSOLE /D _UNICODE /D UNICODE"
     preprocessor_definitions_for_debugging  = "/D _DEBUG"
-    libs_path_from_third_party              = ""
+    libs_path_from_third_party              = ".\\Compiler\\LIBS\\Project\\*.lib"
     libs_linked_by_default                  = "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib"
-    libs_to_be_extra_linked                 = ".\\Compiler\\LIBS\\Project\\*.lib"
+    libs_to_be_extra_linked                 = ".\\Compiler\\LIBS\\Engine\\*.lib"
     dll_to_be_delayed_on_load               = ""
 
     # Debug Flags Settings
@@ -37,7 +37,7 @@ def Compile():
 
     # Add compilation files to txt file
     # files_vendors_cpp = IterateFile(include_project_folder + "Vendors\\", ".cpp");
-    files_source_cpp  = IterateFile(include_project_folder, ".cpp");
+    files_source_cpp  = IterateFile(include_project_folders, ".cpp");
 
     with open('cpp_sources.txt', 'w') as f:
         # for i in files_vendors_cpp: f.write(i + "\n")
@@ -49,7 +49,7 @@ def Compile():
     compiler_flags += "/await /fp:precise /Zc:forScope /Zc:inline "
     compiler_flags += building_flags + " /nologo "                     # General Configuration
     compiler_flags += "/EHsc /diagnostics:caret /W3 /FC " #/WX "       # Error Handling            
-    compiler_flags += "/Zi /RTC1 /GS"                                  # Debugging Configuration
+    compiler_flags += "/ZI /RTC1 /GS"                                  # Debugging Configuration
 
     # MSVC Linker Settings
     linker_flags = "/NOLOGO /INCREMENTAL /DEBUG /NXCOMPAT /ERRORREPORT:PROMPT /SUBSYSTEM:CONSOLE /MACHINE:X64 /DYNAMICBASE"
@@ -58,9 +58,9 @@ def Compile():
     result_arguments = "cl.exe " + compiler_flags + " "
     result_arguments += preprocessor_definitions_by_default + " "
     result_arguments += preprocessor_definitions_for_debugging + " "
-    result_arguments += "/I " + include_folders + " "
-    result_arguments += "/I " + include_project_folder + " "
-    result_arguments += "/I " + include_vendors_folder + " "
+    result_arguments += "/I " + include_source_folders + " "
+    result_arguments += "/I " + include_vendors_folders + " "
+    result_arguments += "/I " + include_project_folders + " "
     result_arguments += "@cpp_sources.txt" + " "
     result_arguments += "/Fo:" + obj_file_path + " /Fd:" + pdb_file_path + " "
     result_arguments += "/Fe:" + output_exe_path + " "

@@ -1,5 +1,3 @@
-#define SDL_MAIN_HANDLED
-
 #include "Engine.hpp"
 #include <cassert>
 #include "SDL3/SDL.h"
