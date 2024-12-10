@@ -52,7 +52,7 @@ def Compile():
     compiler_flags += "/await /fp:precise /Zc:forScope /Zc:inline "
     compiler_flags += building_flags + " /nologo "                     # General Configuration
     compiler_flags += "/EHsc /diagnostics:caret /W3 /FC " #/WX "       # Error Handling            
-    compiler_flags += "/Z7 /GS /Gd /RTC1"                         # Debugging Configuration
+    compiler_flags += "/ZI /GS /Gd /RTC1"                         # Debugging Configuration
 
     # MSVC Linker Settings
     linker_flags = "/NOLOGO /INCREMENTAL /DEBUG /NXCOMPAT /ERRORREPORT:PROMPT /SUBSYSTEM:CONSOLE /MACHINE:X64 /DYNAMICBASE"

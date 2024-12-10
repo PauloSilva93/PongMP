@@ -32,5 +32,15 @@
             "console": "externalTerminal",
             "preLaunchTask": "Build All Development"
         },
+        {
+            "name": "(Hot Reload) Execute",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Compiler/SCR/blink.exe",
+            "args": ["--no-compile", "${workspaceFolder}/Build/game.exe"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Build",
+            "console": "externalTerminal"
+        }
     ]
 }
