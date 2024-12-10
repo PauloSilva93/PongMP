@@ -1,5 +1,4 @@
 #pragma once
-#include "Engine/Core/DLL/core.hpp"
 #include <string>
 
 namespace Core {
