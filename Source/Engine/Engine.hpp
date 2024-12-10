@@ -1,11 +1,10 @@
 #pragma once
-#include <iostream>
 
-#define SDL_MAIN_HANDLED
+#include "Engine/Core/application.hpp"
 
-class Engine {
+// ---- Entry Point -------------------
+#include "Engine/Core/DLL/entry-point.hpp"
+#include "Engine/Core/DLL/delayload.hpp"
 
-    public:
-        void Start();
-
-};
+PRE_DEFINE_LIBRARY_PATH(L".\\Binaries\\");
+// ------------------------------------
