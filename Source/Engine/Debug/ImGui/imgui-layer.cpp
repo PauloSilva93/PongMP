@@ -1,4 +1,5 @@
 #include "imgui-layer.hpp"
+#include "Vendors/IconFont/IconsFontAwesome4.h"
 #include "Engine/Core/application.hpp"
 #include "Engine/Core/OGL/OGL.hpp"
 #include "Engine/Debug/profiling.hpp"
@@ -35,6 +36,8 @@ namespace Debug {
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
+        this->SetupFonts();
+
         // Setup Platform/Renderer backends
         Engine::Application& app = Engine::Application::Get(); 
         SDL_Window* window = &app.GetWindow();
@@ -65,6 +68,10 @@ namespace Debug {
 
         PROFILE_FUNCTION();
 
+        this->BeginDockspace();
+            editor.Render();
+        this->EndDockspace();
+
         ImGui::ShowDemoWindow();
 
     };
@@ -94,12 +101,78 @@ namespace Debug {
         {
             SDL_Window* backup_current_window = SDL_GL_GetCurrentWindow();
             SDL_GLContext backup_current_context = SDL_GL_GetCurrentContext();
+
             ImGui::UpdatePlatformWindows();
             ImGui::RenderPlatformWindowsDefault();
+           
             SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
-        }
+        
+        };
 
     };
 
+    void ImGuiLayer::BeginDockspace() {
+
+        ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDocking | 
+                                       ImGuiWindowFlags_NoTitleBar | 
+                                       ImGuiWindowFlags_NoCollapse | 
+                                       ImGuiWindowFlags_NoResize | 
+                                       ImGuiWindowFlags_NoMove | 
+                                       ImGuiWindowFlags_NoBringToFrontOnFocus | 
+                                       ImGuiWindowFlags_NoNavFocus;
+
+        const ImGuiViewport* viewport = ImGui::GetMainViewport();
+        ImGui::SetNextWindowPos(viewport->WorkPos);
+        ImGui::SetNextWindowSize(viewport->WorkSize);
+        ImGui::SetNextWindowViewport(viewport->ID);
+
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+
+        dockspaceBegin = ImGui::Begin("Editor", nullptr, windowFlags);
+        ImGui::PopStyleVar(3);
+
+        if (dockspaceBegin) {
+
+            ImGuiIO& io = ImGui::GetIO();
+            if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable) {
+
+                this->dockspaceID = ImGui::GetID("EditorDockspace");
+                editor.ResetLayout(this->dockspaceID);
+                
+                ImGui::DockSpace(
+                    this->dockspaceID, 
+                    ImVec2(0.0f, 0.0f), 
+                    ImGuiDockNodeFlags_PassthruCentralNode
+                );
+
+            };
+
+        };
+
+    };
+
+    void ImGuiLayer::EndDockspace() {
+
+        if (dockspaceBegin) {
+            ImGui::End();
+        };
+
+    };
+
+    void ImGuiLayer::SetupFonts() {
+
+        ImGuiIO& io = ImGui::GetIO();
+
+        ImFontConfig fontConfig;
+
+        io.Fonts->AddFontDefault();
+        fontConfig.MergeMode = true;
+        fontConfig.GlyphMinAdvanceX = 32.0F;
+        static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+        io.Fonts->AddFontFromFileTTF("./Editor/Fonts/fontawesome-webfont.ttf", 32.0f, &fontConfig, iconRanges);
+
+    };
 
 };
