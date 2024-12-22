@@ -1,6 +1,7 @@
 #include "OGL.hpp"
 #include <cstdio>
 #include "Vendors/GLAD/glad.h"
+#include "Engine/Debug/Logger.hpp"
 #include "Engine/Debug/profiling.hpp"
 
 namespace OGL {
@@ -35,10 +36,12 @@ namespace OGL {
 
         PROFILE_FUNCTION();
 
-        if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress)) { 
-            printf("GLAD NOT LOADED");
-            //ERROR
-        };
+        DEBUG_CHECK(
+            gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress),
+            "OPENGL",
+            "GLAD has been initialized",
+            "GLAD error"
+        );
 
     };
 

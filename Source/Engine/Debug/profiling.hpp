@@ -66,7 +66,7 @@ namespace Profiler {
 
 };
 
-#ifdef _DEBUG
+#ifdef ENGINE_DEBUG
     #define PROFILE_SCOPE(name) Profiler::Timer timer##__LINE__(name)
     #define PROFILE_FUNCTION() PROFILE_SCOPE(__FUNCTION__)
 #else

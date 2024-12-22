@@ -24,7 +24,7 @@ def Compile():
 
     # Import Paths
     preprocessor_definitions_by_default     = "/D WIN32 /D _CONSOLE /D _UNICODE /D UNICODE"
-    preprocessor_definitions_for_debugging  = "/D _DEBUG"
+    preprocessor_definitions_for_debugging  = "/D _DEBUG /D ENGINE_DEBUG"
     libs_path_from_third_party              = ".\\Compiler\\LIBS\\Engine\\*.lib"
     libs_linked_by_default                  = "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib"
     libs_to_be_extra_linked                 = ""
@@ -37,8 +37,8 @@ def Compile():
     building_flags = ""
 
     # Add compilation files to txt file
-    files_vendors_c   = IterateFile(include_folders + "Vendors\\", ".c");
-    files_vendors_cpp = IterateFile(include_folders + "Vendors\\", ".cpp");
+    files_vendors_c   = IterateFile(include_vendors_folders, ".c");
+    files_vendors_cpp = IterateFile(include_vendors_folders, ".cpp");
     files_source_cpp  = IterateFile(include_folders, ".cpp");
 
     with open('cpp_sources.txt', 'w') as f:

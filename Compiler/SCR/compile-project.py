@@ -24,7 +24,7 @@ def Compile():
 
     # Import Paths
     preprocessor_definitions_by_default     = "/D _CONSOLE /D _UNICODE /D UNICODE"
-    preprocessor_definitions_for_debugging  = "/D _DEBUG"
+    preprocessor_definitions_for_debugging  = "/D _DEBUG /D ENGINE_DEBUG"
     libs_path_from_third_party              = ".\\Compiler\\LIBS\\Project\\*.lib"
     libs_linked_by_default                  = "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib"
     libs_to_be_extra_linked                 = ".\\Compiler\\LIBS\\Engine\\*.lib"

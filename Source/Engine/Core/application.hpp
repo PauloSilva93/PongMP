@@ -34,12 +34,12 @@ namespace Engine {
             bool isRunning = false;
             Core::LayerStack layerStack;
             
-            SDL_Window* window;
+            SDL_Window* window = nullptr;
             SDL_Event event;
 
             OGL::Render renderer;
 
-            Debug::ImGuiLayer* imGuiLayer;
+            Debug::ImGuiLayer* imGuiLayer = nullptr;
 
     };
 
