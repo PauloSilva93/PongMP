@@ -4,7 +4,7 @@
 #include <ctime>
 #include <cstdint>
 
-#define LOG_ON_IOSTREAM 0
+// #define LOG_ON_IOSTREAM
 
 namespace Debug {
 
@@ -14,7 +14,7 @@ namespace Debug {
         VERBOSE,        // Blue
         SUCCESS,        // Green
         WARNING,        // Yellow
-        ERROR,          // Red
+        ERRORS,         // Red
         ASSERT          // Purple
 
     };
@@ -57,7 +57,7 @@ namespace Debug {
     #define DEBUG_VERBOSE(tag, format, ...) Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::VERBOSE,  (tag), (format), __VA_ARGS__)
     #define DEBUG_SUCCESS(tag, format, ...) Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::SUCCESS,  (tag), (format), __VA_ARGS__)
     #define DEBUG_WARNING(tag, format, ...) Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::WARNING,  (tag), (format), __VA_ARGS__)
-    #define DEBUG_ERROR(tag, format, ...)   Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::ERROR,    (tag), (format), __VA_ARGS__)
+    #define DEBUG_ERROR(tag, format, ...)   Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::ERRORS,    (tag), (format), __VA_ARGS__)
 
     #define DEBUG_CHECK(condition, tag, success, error, ...) (condition) ? DEBUG_SUCCESS(tag, success, __VA_ARGS__) : DEBUG_ERROR(tag, error, __VA_ARGS__)
 
@@ -65,11 +65,11 @@ namespace Debug {
     {                                                                                           \
         if (!(condition)){                                                                      \
                                                                                                 \
+            Debug::Logger::Log(__FILE__, __LINE__, Debug::ELogLevel::ASSERT, (tag), (format), __VA_ARGS__);    \
+                                                                                                \
             std::cerr << "Assertion failed at " << __FILE__ << ":" << __LINE__;                 \
             std::cerr << " inside " << __FUNCTION__ << std::endl;                               \
             std::cerr << "Condition: " << #condition;                                           \
-                                                                                                \
-            Debug::Logger::Log(__FILE__, __LINE__, ELogLevel::ASSERT, (tag), (format), __VA_ARGS__);    \
                                                                                                 \
             std::terminate();                                                                   \
                                                                                                 \

@@ -25,7 +25,7 @@ namespace Debug {
             case ELogLevel::VERBOSE: msg.levelText = "VERBOSE"; break;
             case ELogLevel::SUCCESS: msg.levelText = "SUCCESS"; break;
             case ELogLevel::WARNING: msg.levelText = "WARNING"; break;
-            case ELogLevel::ERROR:   msg.levelText = "ERROR  ";   break;
+            case ELogLevel::ERRORS:  msg.levelText = "ERROR  ";   break;
             case ELogLevel::ASSERT:  msg.levelText = "ASSERT ";  break;
             default: msg.levelText = "UNDEFINED"; break;
         };
@@ -85,7 +85,7 @@ namespace Debug {
                 case ELogLevel::VERBOSE:    buffer += "VERBOSE | ";      break;
                 case ELogLevel::SUCCESS:    buffer += "SUCCESS | ";      break;
                 case ELogLevel::WARNING:    buffer += "WARNING | ";      break;
-                case ELogLevel::ERROR:      buffer += "ERROR   | ";      break;
+                case ELogLevel::ERRORS:     buffer += "ERROR   | ";      break;
                 case ELogLevel::ASSERT:     buffer += "ASSERT  | ";      break;
                 default: break;
             };
@@ -145,7 +145,7 @@ namespace Debug {
                 case ELogLevel::VERBOSE:    buffer += "VERBOSE | ";      break;
                 case ELogLevel::SUCCESS:    buffer += "SUCCESS | ";      break;
                 case ELogLevel::WARNING:    buffer += "WARNING | ";      break;
-                case ELogLevel::ERROR:      buffer += "ERROR   | ";      break;
+                case ELogLevel::ERRORS:     buffer += "ERROR   | ";      break;
                 case ELogLevel::ASSERT:     buffer += "ASSERT  | ";      break;
                 default: break;
             };
@@ -179,7 +179,7 @@ namespace Debug {
             case ELogLevel::VERBOSE: textColor = "\033[1;90m"; textLevel = "VERBOSE"; break;
             case ELogLevel::SUCCESS: textColor = "\033[1;32m"; textLevel = "SUCCESS"; break;
             case ELogLevel::WARNING: textColor = "\033[1;33m"; textLevel = "WARNING"; break;
-            case ELogLevel::ERROR:   textColor = "\033[1;31m"; textLevel = "ERROR  "; break;
+            case ELogLevel::ERRORS:  textColor = "\033[1;31m"; textLevel = "ERROR  "; break;
             case ELogLevel::ASSERT:  textColor = "\033[1;35m"; textLevel = "ASSERT "; break;
         }
 
