@@ -28,7 +28,7 @@ def Compile():
     libs_path_from_third_party              = ".\\Compiler\\LIBS\\Project\\*.lib"
     libs_linked_by_default                  = "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib delayimp.lib"
     libs_to_be_extra_linked                 = ".\\Compiler\\LIBS\\Engine\\*.lib"
-    dll_to_be_delayed_on_load               = ""
+    dll_to_be_delayed_on_load               = "/DELAYLOAD:SDL3.dll /DELAYLOAD:SDL3_net.dll /DELAYLOAD:SDL3_image.dll"
 
     # Debug Flags Settings
     debug_flags = "/MD" if is_release else "/MDd"
