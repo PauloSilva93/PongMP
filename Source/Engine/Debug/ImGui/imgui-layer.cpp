@@ -25,6 +25,8 @@ namespace Debug {
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // Enable Docking
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Multi-Viewport / Platform Windows
 
+        io.IniFilename = "./Assets/Editor/editor_imgui.ini";
+
         // Setup Dear ImGui style
         ImGui::StyleColorsDark();
 
