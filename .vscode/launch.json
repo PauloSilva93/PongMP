@@ -41,6 +41,16 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/Build",
             "console": "externalTerminal"
+        },
+        {
+            "name": "(Hot Reload) Attach",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Compiler/SCR/blink.exe",
+            "args": ["--no-compile", "${command:pickProcess}"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Build",
+            "console": "externalTerminal"
         }
     ]
 }
