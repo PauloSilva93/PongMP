@@ -12,6 +12,10 @@ namespace ImGuiWidget {
             void MenuBar();
             void Actions(); 
 
+            void MenuFile();
+            void MenuEdit();
+            void MenuPackage();
+
     };
 
 };

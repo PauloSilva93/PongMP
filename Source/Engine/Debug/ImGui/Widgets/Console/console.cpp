@@ -107,7 +107,7 @@ namespace ImGuiWidget {
             case Debug::ELogLevel::VERBOSE: color = ImVec4(0.0f, 1.0f, 1.0f, 1.0f); break;
             case Debug::ELogLevel::SUCCESS: color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f); break;
             case Debug::ELogLevel::WARNING: color = ImVec4(1.0f, 1.0f, 0.0f, 1.0f); break;
-            case Debug::ELogLevel::ERROR:   color = ImVec4(1.0f, 0.0f, 0.0f, 1.0f); break;
+            case Debug::ELogLevel::ERRORS:  color = ImVec4(1.0f, 0.0f, 0.0f, 1.0f); break;
             case Debug::ELogLevel::ASSERT:  color = ImVec4(1.0f, 1.0f, 0.0f, 1.0f); break;
 
             default: color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); break;

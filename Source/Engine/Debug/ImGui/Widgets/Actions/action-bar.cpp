@@ -15,28 +15,21 @@ namespace ImGuiWidget {
 
         if (ImGui::BeginMainMenuBar())
         {
-            if (ImGui::BeginMenu("File"))
-            {
-                if (ImGui::MenuItem("New File")) {}
+            if (ImGui::BeginMenu("File")) {
+                this->MenuFile();
                 ImGui::EndMenu();
-            }
-            if (ImGui::BeginMenu("Edit"))
-            {
-                if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
-                if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
-                ImGui::Separator();
-                if (ImGui::MenuItem("Cut", "CTRL+X")) {}
-                if (ImGui::MenuItem("Copy", "CTRL+C")) {}
-                if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+            };
+
+            if (ImGui::BeginMenu("Edit")) {
+                this->MenuEdit();
                 ImGui::EndMenu();
-            }
-            if (ImGui::BeginMenu("Package"))
-            {
-                if (ImGui::MenuItem("Build PAK")) {}
-                if (ImGui::MenuItem("Extract PAK")) {}
-                if (ImGui::MenuItem("Read Files on PAK")) {}
+            };
+
+            if (ImGui::BeginMenu("Package")) {
+                this->MenuPackage();  
                 ImGui::EndMenu();
-            }
+            };
+
             ImGui::EndMainMenuBar();
         }
     };
@@ -60,5 +53,25 @@ namespace ImGuiWidget {
         ImGui::End();
 
     };
+
+    void ActionBar::MenuFile() {
+        if (ImGui::MenuItem("New File")) {}    
+    };
+
+    void ActionBar::MenuEdit() {
+        if (ImGui::MenuItem("Undo", "CTRL+Z")) {}
+        if (ImGui::MenuItem("Redo", "CTRL+Y", false, false)) {}  // Disabled item
+        ImGui::Separator();
+        if (ImGui::MenuItem("Cut", "CTRL+X")) {}
+        if (ImGui::MenuItem("Copy", "CTRL+C")) {}
+        if (ImGui::MenuItem("Paste", "CTRL+V")) {}
+    };
+
+    void ActionBar::MenuPackage() {
+        if (ImGui::MenuItem("Build PAK")) {}
+        if (ImGui::MenuItem("Extract PAK")) {}
+        if (ImGui::MenuItem("Read Files on PAK")) {}
+    };
+
 
 };
