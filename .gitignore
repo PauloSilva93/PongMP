@@ -5,6 +5,7 @@ Build/game.exe
 Build/game.ilk
 Build/imgui.ini
 Build/Binaries/engine.dll
+Build/Content/*.pak
 
 Compiler/LOGS/profiler.json
 

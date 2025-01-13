@@ -171,7 +171,7 @@ namespace Debug {
         fontConfig.MergeMode = true;
         fontConfig.GlyphMinAdvanceX = 32.0F;
         static const ImWchar iconRanges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
-        io.Fonts->AddFontFromFileTTF("./Editor/Fonts/fontawesome-webfont.ttf", 32.0f, &fontConfig, iconRanges);
+        io.Fonts->AddFontFromFileTTF("./Assets/Editor/Fonts/fontawesome-webfont.ttf", 13.0f, &fontConfig, iconRanges);
 
     };
 
